@@ -1,10 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import QRCode from 'qrcode.react';
 
 export default function Home() {
+  
   const [user, setUser] = useState({});
+
+  
+  
 
   useEffect(() => {
     // get token from local storage
@@ -14,15 +18,17 @@ export default function Home() {
 
     //  fetch data from get user api
     axios
-      .get("http://localhost:8888/users/", {
+      .get("http://3.10.144.166:8888/users/", {
         headers: { Authorization: token },
       })
       .then((response) => {
         console.log(response);
         setUser(response.data.result);
+        
       })
       .catch((error) => {
         console.log(error);
+        console.log(token)
       });
   }, []);
 
@@ -50,34 +56,66 @@ export default function Home() {
     }, 1500);
   };
 
+
+  const onClickRefresh = (event) => {
+    event.preventDefault();
+    window.location.reload();
+    // reload page
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
+  };
+
   return (
-    <div className="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
-      <div className="card w-96 mx-auto bg-white shadow-xl hover:shadow">
+    <div >
+      <div>
         <img
-          className="w-32 mx-auto rounded-full -mt-20 border-8 border-white"
-          alt="profile"
-          src={user.profile}
-        />
-        <div className="text-center mt-2 text-3xl font-medium">{user.name}</div>
-        <div className="text-center mt-2 font-light text-sm">
-          @{user.username}
-        </div>
-        <div className="text-center font-normal text-lg">{user.email}</div>
-        <div className="px-6 text-center mt-2 font-light text-sm">
-          <p>{user.birth}</p>
-        </div>
-        <hr className="mt-8"></hr>
-        <div className="flex p-4">
-          <div className="w-1/2 text-center">
-            <span className="font-bold">{user.sex}</span>
+            alt="profile"
+            //src={user.profile}
+            src={require('./asset/background-top.jpg')}
+          />
+      </div>
+      
+      <div style={{margin:"15%"}}>
+        <QRCode
+          id="qrCode"
+          level="H"
+          value={user}
+          size={230} // 二维码的大小
+          fgColor="#000000" // 二维码的颜色
+          style={{ margin: 'auto' }}
+          
+        /> 
+      </div>
+      <div>
+        <img
+            alt="profile"
+            //src={user.profile}
+            src={require('./asset/middle.gif')}
+          />
+      </div>
+      <div>
+        <img
+            alt="profile"
+            //src={user.profile}
+            src={require('./asset/bottom.jpg')}
+          />
+      </div>
+
+      <div className="flex p-2">
+          <div className="w-full text-center">
+            <button
+              onClick={(event) => {
+                onClickRefresh(event);
+              }}
+              className="py-3 w-64 text-xl text-black outline-none bg-gray-50 hover:bg-gray-100 active:bg-gray-200"
+            >
+              Refresh
+            </button>
           </div>
-          <div className="w-0 border border-gra-300"></div>
-          <div className="w-1/2 text-center">
-            <span className="font-bold">{user.phone_number}</span>
-          </div>
-        </div>
-        <hr className="mt-3"></hr>
-        <div className="flex p-2">
+      </div>
+
+      <div className="flex p-2">
           <div className="w-full text-center">
             <button
               onClick={(event) => {
@@ -88,8 +126,8 @@ export default function Home() {
               Log out
             </button>
           </div>
-        </div>
       </div>
+      
     </div>
   );
 }

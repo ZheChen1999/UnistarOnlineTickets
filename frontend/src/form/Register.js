@@ -79,7 +79,7 @@ export default function Register(props) {
     console.log(formRegister);
     // Post to register API
     await axios
-      .post("http://localhost:8888/auth/register", formRegister)
+      .post("http://3.10.144.166:8888/auth/register", formRegister)
       .then((response) => {
         // move to sign in page
         navigate("/?signin");

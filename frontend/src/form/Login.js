@@ -26,7 +26,7 @@ export default function Login(props) {
     console.log(loginForm);
     // call api login
     await axios
-      .post("http://localhost:8888/auth/login", loginForm)
+      .post("http://3.10.144.166:8888/auth/login", loginForm)
       .then((response) => {
         console.log(response);
         // Save token to local storage

@@ -82,7 +82,13 @@ export default function Home() {
         
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        
+        if (error.message === "Network Error") {
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("auth_token_type");
+        }
+
       });
   }, []);
 

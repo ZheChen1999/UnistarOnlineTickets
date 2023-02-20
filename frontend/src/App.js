@@ -29,8 +29,8 @@ function App() {
   const pages = () => {
     if (token == null) {
       return (
-        <div className="min-h-screen bg-yellow-400 flex justify-center items-center">
-          <div className="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
+        <div className="min-h-screen flex justify-center items-center" style={{backgroundImage:`url(${require('./asset/login-background.jpg')})`,backgroundSize:"100%"}}>
+          <div className="py-12 px-12 bg-white rounded-2xl shadow-xl z-20" style={{opacity:"95%"}}>
             {chosePage()}
           </div>
         </div>

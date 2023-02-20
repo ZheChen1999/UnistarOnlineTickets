@@ -55,7 +55,7 @@ export default function Login(props) {
     <React.Fragment>
       <div>
         <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
-          Welcome to lemoncode21
+          Welcome to Unistar
         </h1>
         <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer mx-auto">
           Please login to your account!

@@ -73,7 +73,7 @@ export default function Home() {
 
     //  fetch data from get user api
     axios
-      .get("http://3.10.144.166:8888/users/", {
+      .get("http://38.60.216.53:8888/users/", {
         headers: { Authorization: token },
       })
       .then((response) => {
@@ -139,6 +139,9 @@ export default function Home() {
       
       <div style={{margin:"11%"}}>
         <QRCode
+          onClick={(event) => {
+            onClickRefresh(event);
+          }}
           id="qrCode"
           level="Q"
           value={user}
@@ -204,8 +207,10 @@ export default function Home() {
         <h1 style={{fontSize:"70%", opacity:"80%"}}>Expires 00:00, Fri 29th December</h1>
       </div>
 
+      {/* <div style={{height:"200px"}}> */}
 
-      <div className="flex p-2">
+      {/* </div> */}
+      {/* <div className="flex p-2">
           <div className="w-full text-center">
             <button
               onClick={(event) => {
@@ -216,9 +221,9 @@ export default function Home() {
               Refresh
             </button>
           </div>
-      </div>
+      </div> */}
 
-      <div className="flex p-2">
+      {/* <div className="flex p-2">
           <div className="w-full text-center">
             <button
               onClick={(event) => {
@@ -229,7 +234,7 @@ export default function Home() {
               Log out
             </button>
           </div>
-      </div>
+      </div> */}
       
     </div>
   );

@@ -21,7 +21,7 @@ class JWTRepo:
         if expires_delta:
             expire = datetime.utcnow() + expires_delta
         else:
-            expire = datetime.utcnow() + timedelta(minutes=15)
+            expire = datetime.utcnow() + timedelta(days=7)
         to_encode.update({"exp": expire})
         encode_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 

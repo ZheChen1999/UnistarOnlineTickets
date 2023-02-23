@@ -26,7 +26,7 @@ export default function Login(props) {
     console.log(loginForm);
     // call api login
     await axios
-      .post("http://3.10.144.166:8888/auth/login", loginForm)
+      .post("http://38.60.216.53:8888/auth/login", loginForm)
       .then((response) => {
         console.log(response);
         // Save token to local storage
@@ -89,7 +89,7 @@ export default function Login(props) {
           </button>
           <p className="mt-4 text-sm">
             You don't have an account?{" "}
-            <Link
+            {/* <Link
               to="/?register"
               onClick={() => {
                 props.setPage("register");
@@ -97,7 +97,7 @@ export default function Login(props) {
             >
               <span className="underline cursor-pointer">Register</span>
             </Link>{" "}
-            or{" "}
+            or{" "} */}
             <Link
               to="/?forgot"
               onClick={() => {

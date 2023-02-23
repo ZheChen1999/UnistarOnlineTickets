@@ -60,14 +60,19 @@ def get_ewm(img_adds):
         barcodeData = txt.data.decode("utf-8")
         data = data + barcodeData
     return data
+"Grab the part of the screen"
 
+import pyscreenshot as ImageGrab
 def cap_jiexi_bus_code(is_jiexi = True):
     if is_jiexi:
         i=0
         while True:
-            window_capture("haha" + str(i) + ".jpg")
-            jiexi_text = get_ewm("haha" + str(i) + ".jpg")
-            time.sleep(1)
+            im = ImageGrab.grab(bbox=(0, 0, 500, 500))  # X1,Y1,X2,Y2
+            im.save("test.png")
+            #window_capture("haha" + str(i) + ".jpg")
+            #jiexi_text = get_ewm("haha" + str(i) + ".jpg")
+    
+            jiexi_text = get_ewm("test" + ".png")
             print(jiexi_text)
             with open('data.txt','w') as f:    #设置文件对象
                 f.write(jiexi_text)                 #将字符串写入文件中

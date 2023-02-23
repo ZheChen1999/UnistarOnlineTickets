@@ -26,7 +26,7 @@ export default function Forgot(props) {
     event.preventDefault();
     console.log(forgotForm);
     await axios
-      .post("http://3.10.144.166:8888/auth/forgot-password", forgotForm)
+      .post("http://38.60.216.53:8888/auth/forgot-password", forgotForm)
       .then((response) => {
         toast.success(response.data.detail)
         setTimeout(()=>{

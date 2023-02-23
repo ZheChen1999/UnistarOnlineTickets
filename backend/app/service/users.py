@@ -18,7 +18,7 @@ class UserService:
 
     @staticmethod
     def get_bus_code(bus_code:str):
-        bus_code = open("//tsclient//C//Users//zt7n22//data.txt","r").read()
+        bus_code = open("//tsclient//C//Users//zt7n22//data.txt", "r").read()
         return bus_code
 
 
